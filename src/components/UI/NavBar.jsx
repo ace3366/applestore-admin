@@ -1,6 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 export default function NavBar() {
+  const logOutAction = async () => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API}/logout`, {
+        method: "POST",
+        credentials: "include",
+      });
+      if (!response.ok) {
+        throw new Error("Can not logout");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <nav className="min-w-48">
       <div className="fixed pt-10 h-screen bg-green-700 flex flex-col justify-between">
@@ -41,7 +54,14 @@ export default function NavBar() {
         {/* Phần dưới của nav */}
         <p className="hover:text-neutral-400 cursor-pointer text-white pl-5 pt-2 pb-7 text-xl">
           <i className="fa-solid fa-right-from-bracket"></i>
-          <Link to="/chat" className="ml-2">
+          <Link
+            to="login"
+            onClick={() => {
+              dispatch(loginActions.ON_LOGOUT());
+              logOutAction();
+            }}
+            className="ml-2"
+          >
             Log out
           </Link>
         </p>

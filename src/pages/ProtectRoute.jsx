@@ -11,7 +11,7 @@ const checkAuth = async () => {
       throw new Error("Can not get auth");
     }
     const resData = await response.json();
-
+    console.log(resData);
     return resData.isAuth;
   } catch (err) {
     console.log(err);
@@ -28,6 +28,7 @@ const ProtectedRoute = ({ element }) => {
     };
     verifyAuth();
   }, []);
+  console.log(isAuthenticated);
 
   if (isAuthenticated === null) {
     return <div className="text-center h-screen">Loading...</div>;
