@@ -39,7 +39,6 @@ export default function ChatSection() {
 
   // Lấy tin nhắn từ DB
   useEffect(() => {
-    console.log(roomId);
     // Join room with roomId
     socket.emit("joinRoom", { roomId });
 
@@ -57,7 +56,7 @@ export default function ChatSection() {
           throw new Error("Can not fetch message");
         }
         const resData = await response.json();
-        console.log(resData);
+
         setMessages(resData);
       } catch (err) {
         console.log(err);

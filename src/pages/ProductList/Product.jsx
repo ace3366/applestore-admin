@@ -1,9 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { modalAction } from "../../store/modal";
 import priceConverter from "../../util/priceConverter";
-import Modal from "../../components/UI/Modal";
 
 export default function Product({
   id,
@@ -11,30 +8,8 @@ export default function Product({
   image,
   price,
   category,
-  reRender,
+  openModal,
 }) {
-  const dispatch = useDispatch();
-  // Hàm xoá product
-  const deleteProduct = async () => {
-    try {
-      reRender();
-      const response = await fetch(
-        `${process.env.REACT_APP_API}/admin/delete-product/${id}`,
-        {
-          method: "DELETE",
-          credentials: "include",
-        }
-      );
-      if (!response.ok) throw new Error("Can not fetch data");
-      const result = await response.json();
-      console.log(result);
-      dispatch(modalAction.modalToggle());
-      reRender();
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
     <>
       {id && (
@@ -55,8 +30,11 @@ export default function Product({
             </Link>
             <button
               onClick={() => {
-                dispatch(modalAction.modalToggle());
+                openModal(id);
               }}
+              // onClick={() => {
+              //   dispatch(modalAction.modalToggle());
+              // }}
               className="p-2 rounded hover:bg-red-500 bg-red-600 ml-2 text-white"
             >
               Delete
@@ -64,29 +42,6 @@ export default function Product({
           </td>
         </tr>
       )}
-      <Modal>
-        <div className="pt-10 px-10 pb-8 text-center">
-          <h2 className="font-medium text-xl">
-            Are you sure to delete this product?
-          </h2>
-          <div className="flex justify-between mt-8 px-16">
-            <button
-              onClick={deleteProduct}
-              className="py-2 px-4 text-xl rounded hover:bg-green-500 bg-green-600 ml-2 text-white"
-            >
-              Yes
-            </button>
-            <button
-              onClick={() => {
-                dispatch(modalAction.modalToggle());
-              }}
-              className="py-2 px-4 text-xl rounded hover:bg-red-500 bg-red-600 ml-2 text-white"
-            >
-              No
-            </button>
-          </div>
-        </div>
-      </Modal>
     </>
   );
 }

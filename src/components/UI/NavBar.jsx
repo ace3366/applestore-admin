@@ -57,7 +57,6 @@ export default function NavBar() {
           <Link
             to="login"
             onClick={() => {
-              dispatch(loginActions.ON_LOGOUT());
               logOutAction();
             }}
             className="ml-2"

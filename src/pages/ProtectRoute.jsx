@@ -28,7 +28,6 @@ const ProtectedRoute = ({ element }) => {
     };
     verifyAuth();
   }, []);
-  console.log(isAuthenticated);
 
   if (isAuthenticated === null) {
     return <div className="text-center h-screen">Loading...</div>;

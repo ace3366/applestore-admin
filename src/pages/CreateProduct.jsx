@@ -168,6 +168,7 @@ export default function CreateProduct() {
             </p>
             <input type="file" id="image" name="image" className="" multiple />
           </div>
+
           <button className="py-2 px-3 bg-violet-500 text-white rounded text-lg ">
             Submit
           </button>

@@ -8,7 +8,7 @@ export default function OrderDetail() {
   };
   const [order, setOrder] = useState({});
   const { orderId } = useParams();
-  console.log(order);
+
   // Fetch data
   useEffect(() => {
     const fetchData = async () => {
