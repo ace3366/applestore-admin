@@ -78,5 +78,8 @@ export async function action({ request, params }) {
       return response;
     }
     return redirect("/products");
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+    return { error: [{ msg: "Something went wrong with the server ! " }] };
+  }
 }
