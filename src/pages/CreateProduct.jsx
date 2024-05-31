@@ -166,7 +166,13 @@ export default function CreateProduct() {
             <p className="text-red-500 text-xs">
               {errorDisplay(error, "image")}
             </p>
-            <input type="file" id="image" name="image" className="" multiple />
+            <input
+              type="file"
+              id="image"
+              name="image"
+              className="text-slate-500 file:text-violet-500 file:rounded file:shadow file:font-medium file:cursor-pointer hover:file:bg-violet-500 hover:file:text-neutral-200"
+              multiple
+            />
           </div>
 
           <button className="py-2 px-3 bg-violet-500 text-white rounded text-lg ">

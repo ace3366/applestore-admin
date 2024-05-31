@@ -5,7 +5,9 @@ export default function Layout() {
   return (
     <div className="flex">
       <NavBar></NavBar>
-      <Outlet></Outlet>
+      <div className="md:pl-3 pl-5 mt-10 w-full">
+        <Outlet></Outlet>
+      </div>
     </div>
   );
 }

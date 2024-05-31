@@ -5,9 +5,9 @@ import { useDebounce } from "../../hooks/useDebound";
 import Modal from "../../components/UI/Modal";
 import Product from "./Product";
 export default function ProductList() {
+  const [idToDelete, setIdToDelete] = useState("");
   const [keyword, setKeyword] = useState("");
   const [products, setProducts] = useState([]);
-  const [idToDelete, setIdToDelete] = useState("");
   const debouncedKeyword = useDebounce(keyword, 500);
   const dispatch = useDispatch();
   //When ever useDebounce return a value, send it to server

@@ -58,16 +58,15 @@ export default function Chat() {
                 key={roomId}
                 className="border-b block flex hover:bg-green-600"
               >
-                <img
-                  className="w-10 inline"
-                  src={require("../../image/3_avatar-512.png")}
-                  alt=""
-                />
-
                 <Link
                   to={`/chat/${roomId}`}
-                  className="px-5 py-3 inline truncate "
+                  className="px-2 py-3 inline truncate "
                 >
+                  <img
+                    className="w-10 inline"
+                    src={require("../../image/3_avatar-512.png")}
+                    alt=""
+                  />
                   {roomId}
                 </Link>
               </li>
